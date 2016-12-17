@@ -1,4 +1,5 @@
-from . import geometry
-from .vector_operations import dot_product, cross_product, vectors_angle
+from vector_euclidean import point3d
 
-print('a')
+c = [1, 1, 2]
+
+point3d.Point_3d(c)

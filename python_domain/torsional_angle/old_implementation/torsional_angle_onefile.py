@@ -11,29 +11,9 @@ print(sys.version)
 
 # In[2]:
 
-class Point_3d(object):
-    """
-    Accepts 3 numerical parameters representing 3d coordinates, converts them to float
-    
-    returns a tuple in form of (x, y, z) coordinates
-    
-    @ToDo: add incorrect x,y,z input handling
-    """
-    def __init__(self, x, y, z):
-        # set point's coordinates
-        self.x = float(x)
-        self.y = float(y)
-        self.z = float(z)
-        self.coords = [self.x, self.y, self.z]
-        
-    def __add__(self, no):
-        return None
-        
-    def __sub__(self, no):
-        # substracting point substracts CORRESPONDING coordinates' values
-        return [m_i - n_i for m_i, n_i in zip(self.coords, no.coords)]
-    
-    
+
+
+
 
 
 
@@ -56,7 +36,7 @@ class Vector(object):
     """
     Accepts 2 Point_3d objects
     usage: Vector(tail, head)
-    
+
     @ToDo: add length function
     """
     def __init__(self, tail, head):
@@ -108,18 +88,18 @@ def cross_product(v1, v2):
     # https://www.mathsisfun.com/algebra/vectors-cross-product.html
     ax, ay, az = v1.vectorized
     bx, by, bz = v2.vectorized
-    
+
     # since we use vectorised v1, v2, we can assume they both start at the origin
     # then AxB = (Ay*Bz - Az*By, ..., ...) [reffer to link above for full formula]
     cx = ay*bz - az*by
     cy = az*bx - ax*bz
     cz = ax*by - ay*bx
-    
+
     # c is our resulting vector, i.e. cross-product b/w v1 and v2
     c_tail = Point_3d( 0,  0,  0)
     c_head = Point_3d(cx, cy, cz)
     c = Vector(c_tail, c_head)
-    
+
     return c
 
 cross_product(AB, BC).vectorized
@@ -152,4 +132,3 @@ print('{0:.2f}'.format(degrees(phi)))
 
 # Sample Output
 8.19
-
