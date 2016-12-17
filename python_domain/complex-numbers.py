@@ -1,3 +1,4 @@
+from __future__ import print_function
 import math
 
 class Complex(object):
@@ -50,4 +51,4 @@ C = map(float, raw_input().split())
 D = map(float, raw_input().split())
 x = Complex(*C)
 y = Complex(*D)
-print '\n'.join(map(str, [x+y, x-y, x*y, x/y, x.mod(), y.mod()]))
+print('\n'.join(map(str, [x+y, x-y, x*y, x/y, x.mod(), y.mod()])))
