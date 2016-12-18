@@ -62,3 +62,26 @@ def vectors_angle(v1, v2):
     cos_theta = dot_product(v1, v2)/(v1.length*v2.length)
     theta = math.acos(cos_theta)
     return theta
+
+def cross_product(v1, v2):
+    """
+    calculate cross product b/w two 3d vectors
+
+    @parameters: two 3d vectors v1, v2
+    @returns: cross product as vector object
+    """
+    # https://www.mathsisfun.com/algebra/vectors-cross-product.html
+    ax, ay, az = v1.gradient
+    bx, by, bz = v2.gradient
+
+    # since we use vectorised v1, v2, we can assume they both start at the origin
+    # then AxB = (Ay*Bz - Az*By, ..., ...) [reffer to link above for full formula]
+    cx = ay*bz - az*by
+    cy = az*bx - ax*bz
+    cz = ax*by - ay*bx
+
+    # cross is our resulting vector, i.e. cross-product b/w v1 and v2
+    cross_tail = point3d( ( 0,  0,  0) )
+    cross_head = point3d( (cx, cy, cz) )
+    cross = vector(cross_tail, cross_head)
+    return cross

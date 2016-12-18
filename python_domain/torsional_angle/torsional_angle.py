@@ -28,3 +28,8 @@ if __name__ == "__main__":
     print('-'*40)
     print('vector angle test')
     print(ve.vectors_angle(AB, BC))
+
+    print('-'*40)
+    print('cross product test')
+
+    print(ve.cross_product(AB, BC).gradient) # it is a vector
