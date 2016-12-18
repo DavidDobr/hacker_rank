@@ -1,3 +1,7 @@
+"""
+Relevant documentation:
+https://docs.python.org/3/howto/sorting.html#sortinghowto
+"""
 s = input()
 def is_even(n):
     if n.isnumeric():
