@@ -1,75 +1,4 @@
 
-# coding: utf-8
-
-# In[1]:
-
-from math import cos, acos, sin, asin, sqrt, degrees
-
-import sys
-print(sys.version)
-
-
-# In[2]:
-
-
-
-
-
-
-
-# INSTANTIATE TEST POINTS
-origin = Point_3d(0, 0, 0)
-a = Point_3d(*"0 4 5".split())
-b = Point_3d(*"1 7 6".split())
-c = Point_3d(*"0 5 9".split())
-d = Point_3d(*"1 7 2".split())
-
-[print(obj.coords) for obj in [origin, a, b, c, d]]
-None
-
-# a, b, c, d = [Point_3d(*input().split()) for _ in range(4)]
-
-
-# In[3]:
-
-class Vector(object):
-    """
-    Accepts 2 Point_3d objects
-    usage: Vector(tail, head)
-
-    @ToDo: add length function
-    """
-    def __init__(self, tail, head):
-        self.tail = tail
-        self.head = head
-        self.vectorized = head - tail
-        self.length = self.length()
-    def length(self):
-        return sqrt( sum([c**2 for c in self.vectorized]) )
-
-# INSTANTIATE INSTANCES OF WORKING VECTORS
-AB = Vector(a, b)
-BC = Vector(b, c)
-CD = Vector(c, d)
-
-[print(obj.vectorized) for obj in (AB, BC, CD)]
-None
-
-
-# In[4]:
-
-AB.length
-
-
-# In[5]:
-
-def dot_product(v1, v2):
-    # https://en.wikipedia.org/wiki/Dot_product
-    # dot product simply sums cross-multiplications of corresponding coordinates
-    multiples = [m_i * n_i for m_i, n_i in zip(v1.vectorized, v2.vectorized)]
-    return sum(multiples)
-print(dot_product(AB, BC))
-
 
 # In[6]:
 
@@ -86,8 +15,8 @@ vectors_angle(AB, BC)
 
 def cross_product(v1, v2):
     # https://www.mathsisfun.com/algebra/vectors-cross-product.html
-    ax, ay, az = v1.vectorized
-    bx, by, bz = v2.vectorized
+    ax, ay, az = v1.gradient
+    bx, by, bz = v2.gradient
 
     # since we use vectorised v1, v2, we can assume they both start at the origin
     # then AxB = (Ay*Bz - Az*By, ..., ...) [reffer to link above for full formula]
@@ -102,7 +31,7 @@ def cross_product(v1, v2):
 
     return c
 
-cross_product(AB, BC).vectorized
+cross_product(AB, BC).gradient
 
 
 # In[8]:
@@ -115,8 +44,8 @@ print(cross_product(AB, BC)) # it is a vector
 M = cross_product(AB, BC)
 N = cross_product(BC, CD)
 
-print(M.vectorized)
-print(N.vectorized)
+print(M.gradient)
+print(N.gradient)
 
 
 # In[10]:

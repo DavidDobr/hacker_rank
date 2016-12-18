@@ -20,3 +20,11 @@ if __name__ == "__main__":
     CD = ve.vector(c, d)
 
     [print(obj.gradient, obj.length) for obj in (AB, BC, CD)]
+    print('-'*40)
+    print('dot_product test')
+
+    print(ve.dot_product(AB, BC))
+
+    print('-'*40)
+    print('vector angle test')
+    print(ve.vectors_angle(AB, BC))

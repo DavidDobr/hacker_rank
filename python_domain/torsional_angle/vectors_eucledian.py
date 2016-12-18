@@ -35,3 +35,30 @@ class vector(object):
         self.head = head
         self.gradient = head - tail
         self.length = math.sqrt( sum([c**2 for c in self.gradient]) )
+
+def dot_product(v1, v2):
+    """
+    calculate dot product of 2 vectors
+
+    @parameters: two 3d vectors v1, v2
+    @returns: dot product as float
+
+    """
+    # https://en.wikipedia.org/wiki/Dot_product
+    # dot product simply sums cross-multiplications of corresponding coordinates
+    multiples = [m_i * n_i for m_i, n_i in zip(v1.gradient, v2.gradient)]
+    return float(sum(multiples))
+
+def vectors_angle(v1, v2):
+    """
+    calculate angle b/w two 3d vectors
+
+    @parameters: two 3d vectors v1, v2
+    @returns: angle as RADIANS
+    """
+
+    # http://www.intmath.com/vectors/7-vectors-in-3d-space.php
+    # returns angle b/w vectrs in RADIANS
+    cos_theta = dot_product(v1, v2)/(v1.length*v2.length)
+    theta = math.acos(cos_theta)
+    return theta
