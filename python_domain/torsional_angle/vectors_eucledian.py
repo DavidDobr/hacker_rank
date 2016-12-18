@@ -1,9 +1,11 @@
-class Point_3d(object):
+import math
+
+class point3d(object):
     """
+    point object
+
+
     @parameters: one list of 3 coordinates
-
-    returns a tuple in form of (x, y, z) coordinates
-
     @ToDo: add incorrect x,y,z input handling
     """
     def __init__(self, l):
@@ -18,3 +20,18 @@ class Point_3d(object):
     def __sub__(self, no):
         # substracting point substracts CORRESPONDING coordinates' values
         return [m_i - n_i for m_i, n_i in zip(self.coords, no.coords)]
+
+class vector(object):
+    """
+    3d eucledian vector object specifying head & tail
+
+    Accepts 2 Point_3d objects
+    usage: Vector(tail, head)
+
+    @ToDo: add length function
+    """
+    def __init__(self, tail, head):
+        self.tail = tail
+        self.head = head
+        self.gradient = head - tail
+        self.length = math.sqrt( sum([c**2 for c in self.gradient]) )
