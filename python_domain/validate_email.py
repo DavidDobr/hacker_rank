@@ -1,3 +1,21 @@
+import string
+
+def constructable(s, chars, with_replacement = True):
+    """
+    Find out whether string s can be constructed using characters form chars
+    @param s: the string to be checked for constructubility
+    @param chars: characters to be used as building blocks of construction
+    @param with_replacement: determines whether construction uses replacement \
+for constructing s out of chars
+
+    @returns: bool (True/False)
+    """
+    s = str(s)
+    chars = str(chars)
+    # create a list asserting whether each character of s is in chars
+    b = [c in chars for c in s]
+    # return True if all characters are in chars; o/w return False
+    return all(b)
 
 def fun(s):
     """ Validate whether a string is a valid email
